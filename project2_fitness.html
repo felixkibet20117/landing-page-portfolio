@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitWithAlex — Transform Your Body in 90 Days</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; color: #222; background: #fff; }
+  nav { background: #0a0a0a; padding: 1rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-size: 20px; font-weight: 700; color: #00e676; letter-spacing: 1px; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; }
+  .nav-cta { background: #00e676; color: #0a0a0a; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; }
+  .hero { background: #0a0a0a; min-height: 520px; display: flex; align-items: center; padding: 4rem 3rem; position: relative; }
+  .hero-left { max-width: 560px; }
+  .tag { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,230,118,0.1); border: 1px solid rgba(0,230,118,0.3); color: #00e676; font-size: 12px; padding: 6px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: 50px; font-weight: 700; color: #fff; line-height: 1.1; margin-bottom: 1.2rem; }
+  .hero h1 span { color: #00e676; }
+  .hero p { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem; max-width: 440px; }
+  .btn-row { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-green { background: #00e676; color: #0a0a0a; border: none; padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; }
+  .btn-ghost { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,0.3); padding: 14px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; }
+  .hero-stats { position: absolute; right: 3rem; top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; }
+  .stat-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1rem 1.5rem; text-align: center; min-width: 130px; }
+  .stat-num { font-size: 28px; font-weight: 700; color: #00e676; }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .programs { padding: 3.5rem 3rem; }
+  .sec-tag { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #00e676; font-weight: 600; margin-bottom: 0.5rem; }
+  .sec-title { font-size: 30px; font-weight: 700; margin-bottom: 0.5rem; }
+  .sec-sub { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 2.5rem; }
+  .prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; }
+  .prog-card { border: 1px solid #eee; border-radius: 12px; padding: 1.5rem; background: #f9f9f9; position: relative; }
+  .prog-card.featured { border-color: #00e676; }
+  .prog-badge { position: absolute; top: 12px; right: 12px; background: #00e676; color: #0a0a0a; font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+  .prog-icon { font-size: 32px; margin-bottom: 12px; }
+  .prog-title { font-size: 16px; font-weight: 600; margin-bottom: 6px; }
+  .prog-desc { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 12px; }
+  .prog-dur { font-size: 12px; color: #00e676; font-weight: 600; }
+  .testimonials { padding: 3.5rem 3rem; background: #f9f9f9; }
+  .test-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .test-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 1.25rem; }
+  .test-stars { color: #f39c12; font-size: 13px; margin-bottom: 10px; }
+  .test-text { font-size: 13px; color: #666; line-height: 1.7; margin-bottom: 14px; }
+  .test-author { display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; }
+  .test-name { font-size: 13px; font-weight: 600; }
+  .test-role { font-size: 11px; color: #888; }
+  .cta { background: #0a0a0a; padding: 4rem 3rem; text-align: center; }
+  .cta h2 { font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+  .cta p { color: rgba(255,255,255,0.5); font-size: 15px; margin-bottom: 2rem; }
+  .cta-btn { background: #00e676; color: #0a0a0a; border: none; padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">FIT<span style="color:#fff">WITH</span>ALEX</div>
+  <div class="nav-links"><a href="#">Programs</a><a href="#">About</a><a href="#">Results</a><a href="#">Contact</a></div>
+  <button class="nav-cta">Start today</button>
+</nav>
+<div class="hero">
+  <div class="hero-left">
+    <div class="tag">⭐ Certified personal trainer</div>
+    <h1>Transform Your<br>Body in <span>90 Days</span></h1>
+    <p>Science-backed fitness programs tailored to your goals. Whether you want to lose weight, build muscle, or boost endurance — Alex has a plan for you.</p>
+    <div class="btn-row">
+      <button class="btn-green">Get my free plan</button>
+      <button class="btn-ghost">▶ See results</button>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-pill"><div class="stat-num">500+</div><div class="stat-label">Clients trained</div></div>
+    <div class="stat-pill"><div class="stat-num">8yr</div><div class="stat-label">Experience</div></div>
+    <div class="stat-pill"><div class="stat-num">98%</div><div class="stat-label">Success rate</div></div>
+  </div>
+</div>
+<div class="programs">
+  <div class="sec-tag">Training programs</div>
+  <div class="sec-title">Pick your path</div>
+  <div class="sec-sub">Every program is designed to deliver real, measurable results.</div>
+  <div class="prog-grid">
+    <div class="prog-card"><div class="prog-icon">🔥</div><div class="prog-title">Fat burner</div><div class="prog-desc">High-intensity cardio and strength circuits to torch fat fast.</div><div class="prog-dur">8 weeks · 5 days/week</div></div>
+    <div class="prog-card featured"><div class="prog-badge">Most popular</div><div class="prog-icon">💪</div><div class="prog-title">Muscle builder</div><div class="prog-desc">Progressive overload training to pack on lean muscle mass.</div><div class="prog-dur">12 weeks · 4 days/week</div></div>
+    <div class="prog-card"><div class="prog-icon">🧘</div><div class="prog-title">Mind & body</div><div class="prog-desc">Yoga, mobility, and mindfulness for total body balance.</div><div class="prog-dur">6 weeks · 3 days/week</div></div>
+    <div class="prog-card"><div class="prog-icon">🏃</div><div class="prog-title">Endurance pro</div><div class="prog-desc">Build stamina and cardiovascular fitness for long-distance goals.</div><div class="prog-dur">10 weeks · 6 days/week</div></div>
+  </div>
+</div>
+<div class="testimonials">
+  <div class="sec-tag">Client results</div>
+  <div class="sec-title">Real people, real results</div>
+  <div class="sec-sub">Don't take our word for it — hear from people who transformed their lives.</div>
+  <div class="test-grid">
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">Lost 18kg in 3 months. Alex's program changed my life — I have more energy than I did at 25!</div><div class="test-author"><div class="avatar" style="background:#e8faf2; color:#00a854">JM</div><div><div class="test-name">James M.</div><div class="test-role">Lost 18kg · Fat burner</div></div></div></div>
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">Gained 8kg of muscle in 12 weeks. The nutrition plan alone was worth every penny.</div><div class="test-author"><div class="avatar" style="background:#f3e8ff; color:#7c3aed">SW</div><div><div class="test-name">Sarah W.</div><div class="test-role">Gained 8kg · Builder</div></div></div></div>
+    <div class="test-card"><div class="test-stars">★★★★★</div><div class="test-text">Completed my first marathon after just 10 weeks of training. Absolutely incredible coaching.</div><div class="test-author"><div class="avatar" style="background:#fff8e1; color:#f39c12">DK</div><div><div class="test-name">David K.</div><div class="test-role">First marathon · Endurance</div></div></div></div>
+  </div>
+</div>
+<div class="cta">
+  <h2>Your transformation starts <span style="color:#00e676">today</span></h2>
+  <p>Free consultation call — no commitment, no pressure. Just results.</p>
+  <button class="cta-btn">Book free consultation</button>
+</div>
+</body>
+</html>

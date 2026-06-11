@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bella Cucina — Fine Italian Dining</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; color: #222; }
+  nav { background: #1a0a00; padding: 1rem 3rem; display: flex; align-items: center; justify-content: space-between; }
+  .nav-logo { font-size: 20px; font-weight: 600; color: #e67e22; }
+  .nav-logo span { color: #fff; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 14px; }
+  .nav-book { background: #e67e22; color: #fff; border: none; padding: 8px 20px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+  .hero { background: #1a0a00; min-height: 520px; display: flex; align-items: center; padding: 4rem 3rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, #3d1a00 0%, #1a0a00 70%); }
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+  .badge { display: inline-block; background: #c0392b; color: #fff; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: 52px; font-weight: 600; line-height: 1.1; color: #fff; margin-bottom: 1rem; }
+  .hero h1 span { color: #e67e22; }
+  .hero p { font-size: 17px; color: rgba(255,255,255,0.7); line-height: 1.7; margin-bottom: 2rem; max-width: 420px; }
+  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary { background: #e67e22; color: #fff; border: none; padding: 14px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 500; }
+  .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); padding: 14px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); background: #fff; border-bottom: 1px solid #eee; }
+  .stat { padding: 1.5rem; text-align: center; border-right: 1px solid #eee; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 28px; font-weight: 600; color: #e67e22; }
+  .stat-label { font-size: 13px; color: #888; margin-top: 4px; }
+  .section { padding: 3.5rem 3rem; }
+  .section-label { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #e67e22; font-weight: 600; margin-bottom: 0.5rem; }
+  .section-title { font-size: 32px; font-weight: 600; margin-bottom: 0.5rem; }
+  .section-sub { font-size: 15px; color: #666; line-height: 1.7; max-width: 500px; margin-bottom: 2.5rem; }
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .menu-card { background: #f9f9f9; border-radius: 12px; overflow: hidden; border: 1px solid #eee; }
+  .menu-img { height: 120px; display: flex; align-items: center; justify-content: center; font-size: 48px; }
+  .menu-img.pasta { background: linear-gradient(135deg, #f39c12, #e67e22); }
+  .menu-img.pizza { background: linear-gradient(135deg, #c0392b, #e74c3c); }
+  .menu-img.steak { background: linear-gradient(135deg, #6b2c1a, #a04020); }
+  .menu-img.dessert { background: linear-gradient(135deg, #9b59b6, #8e44ad); }
+  .menu-info { padding: 1rem; }
+  .menu-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .menu-desc { font-size: 12px; color: #888; line-height: 1.5; margin-bottom: 10px; }
+  .menu-price { font-size: 16px; font-weight: 600; color: #e67e22; }
+  .features { background: #f9f9f9; }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .feature { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 1.5rem; }
+  .feature-icon { font-size: 28px; margin-bottom: 12px; }
+  .feature-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .feature-desc { font-size: 13px; color: #666; line-height: 1.6; }
+  .cta { background: #1a0a00; color: #fff; text-align: center; padding: 4rem 3rem; }
+  .cta h2 { font-size: 36px; font-weight: 600; color: #fff; margin-bottom: 1rem; }
+  .cta p { color: rgba(255,255,255,0.6); font-size: 16px; margin-bottom: 2rem; }
+  .cta-btn { background: #e67e22; color: #fff; border: none; padding: 16px 40px; border-radius: 8px; font-size: 16px; cursor: pointer; font-weight: 500; margin: 0 8px; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Bella<span>Cucina</span></div>
+  <div class="nav-links">
+    <a href="#">Menu</a><a href="#">About</a><a href="#">Gallery</a><a href="#">Contact</a>
+  </div>
+  <button class="nav-book">Book a table</button>
+</nav>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="badge">Est. 2010 · Nairobi, Kenya</div>
+    <h1>Fine Italian<br>Dining <span>Redefined</span></h1>
+    <p>Experience authentic Italian cuisine crafted with passion, premium ingredients, and 15 years of culinary tradition in the heart of Nairobi.</p>
+    <div class="btn-group">
+      <button class="btn-primary">Reserve a table</button>
+      <button class="btn-secondary">View our menu</button>
+    </div>
+  </div>
+</div>
+<div class="stats">
+  <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Years of excellence</div></div>
+  <div class="stat"><div class="stat-num">4.9★</div><div class="stat-label">Average rating</div></div>
+  <div class="stat"><div class="stat-num">50k+</div><div class="stat-label">Happy guests</div></div>
+</div>
+<div class="section">
+  <div class="section-label">Our menu</div>
+  <div class="section-title">Crafted with passion</div>
+  <div class="section-sub">Every dish tells a story — from farm-fresh ingredients to timeless Italian recipes passed down through generations.</div>
+  <div class="menu-grid">
+    <div class="menu-card"><div class="menu-img pasta">🍝</div><div class="menu-info"><div class="menu-name">Tagliatelle al Ragù</div><div class="menu-desc">Slow-cooked beef ragù with handmade pasta and parmesan</div><div class="menu-price">KES 1,800</div></div></div>
+    <div class="menu-card"><div class="menu-img pizza">🍕</div><div class="menu-info"><div class="menu-name">Margherita Verace</div><div class="menu-desc">San Marzano tomatoes, fresh mozzarella, basil, olive oil</div><div class="menu-price">KES 1,500</div></div></div>
+    <div class="menu-card"><div class="menu-img steak">🥩</div><div class="menu-info"><div class="menu-name">Bistecca Fiorentina</div><div class="menu-desc">Grilled T-bone steak with rosemary, garlic, and lemon</div><div class="menu-price">KES 3,200</div></div></div>
+    <div class="menu-card"><div class="menu-img dessert">🍮</div><div class="menu-info"><div class="menu-name">Tiramisu Classico</div><div class="menu-desc">Espresso-soaked ladyfingers with mascarpone cream</div><div class="menu-price">KES 900</div></div></div>
+  </div>
+</div>
+<div class="section features">
+  <div class="section-label">Why choose us</div>
+  <div class="section-title">More than just a meal</div>
+  <div class="section-sub">We create memories that last long after the last bite.</div>
+  <div class="features-grid">
+    <div class="feature"><div class="feature-icon">👨‍🍳</div><div class="feature-title">Master chefs</div><div class="feature-desc">Our head chef trained in Rome and Milan with over 20 years of experience.</div></div>
+    <div class="feature"><div class="feature-icon">🌿</div><div class="feature-title">Fresh ingredients</div><div class="feature-desc">Locally sourced produce and imported Italian staples for every dish.</div></div>
+    <div class="feature"><div class="feature-icon">🍷</div><div class="feature-title">Premium wines</div><div class="feature-desc">A curated selection of over 80 Italian and international wines.</div></div>
+    <div class="feature"><div class="feature-icon">❤️</div><div class="feature-title">Private dining</div><div class="feature-desc">Exclusive rooms for anniversaries, birthdays, and corporate events.</div></div>
+  </div>
+</div>
+<div class="cta">
+  <h2>Ready for an unforgettable evening?</h2>
+  <p>Join us for lunch or dinner — walk-ins welcome, reservations preferred.</p>
+  <button class="cta-btn">Book a table now</button>
+  <button class="cta-btn" style="background:transparent; border: 1.5px solid rgba(255,255,255,0.3);">Call us</button>
+</div>
+</body>
+</html>

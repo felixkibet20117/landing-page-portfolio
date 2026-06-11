@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovAI — Analytics That Actually Make Sense</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', sans-serif; color: #222; background: #fff; }
+  nav { padding: 1rem 3rem; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #eee; }
+  .nav-logo { font-size: 20px; font-weight: 700; color: #222; }
+  .nav-logo span { color: #5b4fff; }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a { color: #888; text-decoration: none; font-size: 14px; }
+  .nav-right { display: flex; gap: 10px; }
+  .btn-login { background: transparent; color: #222; border: 1px solid #ddd; padding: 8px 18px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+  .btn-signup { background: #5b4fff; color: #fff; border: none; padding: 8px 18px; border-radius: 6px; font-size: 14px; cursor: pointer; }
+  .hero { padding: 5rem 3rem 4rem; text-align: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: #f0eeff; border: 1px solid #c4b8ff; color: #5b4fff; font-size: 12px; padding: 5px 14px; border-radius: 20px; margin-bottom: 1.5rem; }
+  .hero h1 { font-size: 52px; font-weight: 700; line-height: 1.15; max-width: 680px; margin: 0 auto 1.2rem; }
+  .hero h1 span { color: #5b4fff; }
+  .hero p { font-size: 17px; color: #666; line-height: 1.8; max-width: 520px; margin: 0 auto 2.5rem; }
+  .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+  .btn-primary { background: #5b4fff; color: #fff; border: none; padding: 14px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; font-weight: 600; }
+  .btn-secondary { background: #f5f5f5; color: #222; border: 1px solid #eee; padding: 14px 28px; border-radius: 8px; font-size: 15px; cursor: pointer; }
+  .hero-logos { display: flex; align-items: center; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .logos-label { font-size: 12px; color: #aaa; }
+  .logo-pill { background: #f5f5f5; border: 1px solid #eee; border-radius: 6px; padding: 6px 16px; font-size: 13px; font-weight: 500; color: #888; }
+  .dashboard { margin: 0 3rem 3rem; border: 1px solid #eee; border-radius: 12px; overflow: hidden; background: #f9f9f9; }
+  .dash-header { background: #fff; border-bottom: 1px solid #eee; padding: 12px 20px; display: flex; align-items: center; gap: 8px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dash-body { padding: 1.5rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .dash-card { background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 1rem; }
+  .dash-label { font-size: 11px; color: #aaa; margin-bottom: 6px; }
+  .dash-val { font-size: 22px; font-weight: 700; }
+  .dash-change { font-size: 11px; margin-top: 4px; }
+  .up { color: #00c853; } .down { color: #e53935; }
+  .dash-chart { grid-column: span 2; background: #fff; border: 1px solid #eee; border-radius: 8px; padding: 1rem; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 6px; height: 80px; margin-top: 10px; }
+  .bar { flex: 1; background: #ede9ff; border-radius: 4px 4px 0 0; }
+  .bar.active { background: #5b4fff; }
+  .features { padding: 4rem 3rem; background: #f9f9f9; }
+  .sec-tag { font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #5b4fff; font-weight: 600; margin-bottom: 0.5rem; }
+  .sec-title { font-size: 30px; font-weight: 700; margin-bottom: 0.5rem; }
+  .sec-sub { font-size: 15px; color: #666; line-height: 1.7; margin-bottom: 2.5rem; max-width: 500px; }
+  .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .feat-card { background: #fff; border: 1px solid #eee; border-radius: 12px; padding: 1.5rem; }
+  .feat-icon { width: 44px; height: 44px; border-radius: 10px; background: #f0eeff; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 22px; }
+  .feat-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+  .feat-desc { font-size: 13px; color: #666; line-height: 1.6; }
+  .pricing { padding: 4rem 3rem; }
+  .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+  .price-card { border: 1px solid #eee; border-radius: 12px; padding: 1.75rem; }
+  .price-card.popular { border: 2px solid #5b4fff; }
+  .pop-badge { display: inline-block; background: #5b4fff; color: #fff; font-size: 11px; padding: 3px 12px; border-radius: 20px; margin-bottom: 1rem; }
+  .price-name { font-size: 16px; font-weight: 600; margin-bottom: 0.5rem; }
+  .price-amt { font-size: 36px; font-weight: 700; color: #5b4fff; margin-bottom: 0.25rem; }
+  .price-per { font-size: 13px; color: #aaa; margin-bottom: 1.25rem; }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 1.5rem; }
+  .price-features li { font-size: 13px; color: #666; display: flex; align-items: center; gap: 8px; }
+  .price-features li::before { content: "✓"; color: #5b4fff; font-weight: 700; }
+  .price-btn { width: 100%; padding: 10px; border-radius: 8px; font-size: 14px; cursor: pointer; border: 1px solid #eee; background: #f5f5f5; color: #222; }
+  .price-btn.main { background: #5b4fff; color: #fff; border: none; }
+  .cta { background: #5b4fff; padding: 4rem 3rem; text-align: center; }
+  .cta h2 { font-size: 36px; font-weight: 700; color: #fff; margin-bottom: 1rem; }
+  .cta p { color: rgba(255,255,255,0.7); font-size: 16px; margin-bottom: 2rem; }
+  .cta-btn { background: #fff; color: #5b4fff; border: none; padding: 16px 40px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Nova<span>AI</span></div>
+  <div class="nav-links"><a href="#">Product</a><a href="#">Pricing</a><a href="#">Docs</a><a href="#">Blog</a></div>
+  <div class="nav-right"><button class="btn-login">Log in</button><button class="btn-signup">Get started free</button></div>
+</nav>
+<div class="hero">
+  <div class="hero-badge">✨ Introducing NovAI 2.0</div>
+  <h1>Analytics that actually <span>make sense</span></h1>
+  <p>NovAI turns your messy business data into clear insights and automated reports — in seconds, not weeks.</p>
+  <div class="hero-btns">
+    <button class="btn-primary">Start for free</button>
+    <button class="btn-secondary">▶ Watch demo</button>
+  </div>
+  <div class="hero-logos">
+    <span class="logos-label">Trusted by teams at</span>
+    <span class="logo-pill">Safaricom</span>
+    <span class="logo-pill">Equity Bank</span>
+    <span class="logo-pill">KCB Group</span>
+    <span class="logo-pill">Twiga Foods</span>
+  </div>
+</div>
+<div class="dashboard">
+  <div class="dash-header">
+    <div class="dot" style="background:#ff5f57"></div>
+    <div class="dot" style="background:#febc2e"></div>
+    <div class="dot" style="background:#28c840"></div>
+    <span style="font-size:13px; color:#aaa; margin-left:8px">NovAI Dashboard · Overview</span>
+  </div>
+  <div class="dash-body">
+    <div class="dash-card"><div class="dash-label">Total revenue</div><div class="dash-val">$84,200</div><div class="dash-change up">↑ 12.4% this month</div></div>
+    <div class="dash-card"><div class="dash-label">Active users</div><div class="dash-val">3,842</div><div class="dash-change up">↑ 8.1% this month</div></div>
+    <div class="dash-card"><div class="dash-label">Churn rate</div><div class="dash-val">2.3%</div><div class="dash-change down">↓ 0.5% this month</div></div>
+    <div class="dash-card"><div class="dash-label">Avg. session</div><div class="dash-val">4m 32s</div><div class="dash-change up">↑ 22s this month</div></div>
+    <div class="dash-chart"><div style="font-size:13px; font-weight:600;">Revenue over time</div><div class="chart-bars"><div class="bar" style="height:40%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:45%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:80%"></div><div class="bar active" style="height:100%"></div></div></div>
+    <div class="dash-chart"><div style="font-size:13px; font-weight:600;">User growth</div><div class="chart-bars"><div class="bar" style="height:30%"></div><div class="bar" style="height:42%"></div><div class="bar" style="height:50%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:72%"></div><div class="bar" style="height:85%"></div><div class="bar active" style="height:95%"></div></div></div>
+  </div>
+</div>
+<div class="features">
+  <div class="sec-tag">Features</div>
+  <div class="sec-title">Everything you need</div>
+  <div class="sec-sub">From raw data to boardroom-ready reports — NovAI handles the heavy lifting.</div>
+  <div class="feat-grid">
+    <div class="feat-card"><div class="feat-icon">🧠</div><div class="feat-title">AI-powered insights</div><div class="feat-desc">Automatically surface trends, anomalies, and opportunities from your data.</div></div>
+    <div class="feat-card"><div class="feat-icon">📊</div><div class="feat-title">Auto reports</div><div class="feat-desc">Schedule and send beautiful reports to your team daily, weekly, or monthly.</div></div>
+    <div class="feat-card"><div class="feat-icon">🔌</div><div class="feat-title">100+ integrations</div><div class="feat-desc">Connect Shopify, Stripe, HubSpot, Google Ads, and more in one click.</div></div>
+    <div class="feat-card"><div class="feat-icon">🔒</div><div class="feat-title">Enterprise security</div><div class="feat-desc">SOC 2 certified, end-to-end encrypted, and fully GDPR compliant.</div></div>
+  </div>
+</div>
+<div class="pricing">
+  <div class="sec-tag">Pricing</div>
+  <div class="sec-title">Simple, transparent pricing</div>
+  <div class="sec-sub">No hidden fees. Cancel anytime.</div>
+  <div class="price-grid">
+    <div class="price-card"><div class="price-name">Starter</div><div class="price-amt">$0</div><div class="price-per">Free forever</div><ul class="price-features"><li>Up to 3 dashboards</li><li>5 data sources</li><li>Basic reports</li></ul><button class="price-btn">Get started</button></div>
+    <div class="price-card popular"><div class="pop-badge">Most popular</div><div class="price-name">Pro</div><div class="price-amt">$49</div><div class="price-per">per month, billed annually</div><ul class="price-features"><li>Unlimited dashboards</li><li>50+ integrations</li><li>AI insights</li><li>Auto reports</li></ul><button class="price-btn main">Start free trial</button></div>
+    <div class="price-card"><div class="price-name">Enterprise</div><div class="price-amt">Custom</div><div class="price-per">tailored to your team</div><ul class="price-features"><li>Everything in Pro</li><li>SSO & audit logs</li><li>Dedicated support</li></ul><button class="price-btn">Contact sales</button></div>
+  </div>
+</div>
+<div class="cta">
+  <h2>Ready to make smarter decisions?</h2>
+  <p>Join 10,000+ businesses already using NovAI. No credit card required.</p>
+  <button class="cta-btn">Get started for free</button>
+</div>
+</body>
+</html>
